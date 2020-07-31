@@ -17,7 +17,6 @@
 
 ### Association
 - has_many :items
-- has_many :shipping_methods
 - has_many :transactions
 
 ## itemsテーブル
@@ -44,28 +43,24 @@
 
 | Column | Type | Options |
 |  ---  |  ---  |  ---  |
-| postcode | integer | null: false |
+| postcode | string | null: false |
 | prefecture_id | integer | null: false |
 | city | string | null: false |
 | block | string | null: false |
 | building | string | --- |
-| phone_number | integer | null: false |
-| user | references | null: false, foreign_key: true|
+| phone_number | string | null: false |
+| item | references | null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
 - belongs_to :item
-- belongs_to :transaction
 
-## transactionsテーブル
+## item_purchasesテーブル
 
 | Column | Type | Options |
 |  ---  |  ---  |  ---  |
 | user | references | null: false, foreign_key: true|
 | item | references | null: false, foreign_key: true|
-| shipping_method | references | null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_method
