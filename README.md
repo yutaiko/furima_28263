@@ -23,16 +23,16 @@
 
 | Column | Type | Options |
 |  ---  |  ---  |  ---  |
-| image | binary | null: false |
+| image | string | null: false |
 | name | string | null: false |
 | description | text | null: false |
-| category | integer | null: false |
-| condition | integer | null: false |
-| shipping_charge | integer | null: false |
-| shipping_origin | integer | null: false |
-| days_until_shipping | integer | null: false |
+| category_id | integer | null: false |
+| condition_id | integer | null: false |
+| shipping_charge_id | integer | null: false |
+| shipping_origin_id | integer | null: false |
+| days_until_shipping_id | integer | null: false |
 | price | integer | null: false |
-| user_id | references | null: false, foreign_key: true|
+| user | references | null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -48,7 +48,7 @@
 | block | string | null: false |
 | building | string | --- |
 | phone_number | integer | null: false |
-| user_id | references | null: false, foreign_key: true|
+| user | references | null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
