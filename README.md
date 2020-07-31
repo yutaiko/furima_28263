@@ -1,17 +1,52 @@
 # README
-##テーブル設計
+# テーブル設計
 
-| users | items | payment_methods | shipping_methods |
-|  ---  |  ---  |  ---  |  ---  |
-| nickname | image | card_number | postcode |
-| email | name | exp_month | prefecture_id |
-| password | description | exp_year | city |
-| first_name | category | security_number | block |
-| last_name | condition | user_id | building |
-| first_name_kana | shipping_charge |  | phone_number |
-| last_name_kana | shipping_origin |  | user_id |
-| birthday | days_until_shipping |  |  |
-|  | price |  |  |
-|  | user_id |  |  |
-|  |  |  |  |
-|  |  |  |  |
+## usersテーブル
+
+| users |
+|  ---  |
+| nickname |
+| email |
+| password |
+| first_name |
+| last_name |
+| first_name_kana |
+| last_name_kana |
+| birthday |
+
+## itemsテーブル
+
+| items |
+|  ---  |
+| image |
+| name |
+| description |
+| category |
+| condition |
+| shipping_charge |
+| shipping_origin |
+| days_until_shipping |
+| price |
+| user_id |
+
+## payment_methodsテーブル
+
+| payment_methods |
+|  ---  |
+| card_number |
+| exp_month |
+| exp_year |
+| security_number |
+| user_id |
+
+## shipping_methodsテーブル
+
+| shipping_methods |
+|  ---  |
+| postcode |
+| prefecture_id |
+| city |
+| block |
+| building |
+| phone_number |
+| user_id |
