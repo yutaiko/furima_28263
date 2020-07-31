@@ -3,51 +3,53 @@
 
 ## usersテーブル
 
-| Column | Type | Presence | Options |
-|  ---  |  ---  |  ---  |  ---  |
-| nickname | string | true | --- |
-| email | string | true | unique:true |
-| password | string | true | length:{min:6} match(/[a-z\d]{6,}/i) | 
-| password_confirmation | string | true | length:{min:6} match(/[a-z\d]{6,}/i) | 
-| first_name | string | true| match(/\A[ぁ-んァ-ン一-龥]+\z/) |
-| last_name | string | true | match(/\A[ぁ-んァ-ン一-龥]+\z/) |
-| first_name_kana | string | true | match(/\A[ァ-ン]+\z/) |
-| last_name_kana | string | true | match(/\A[ァ-ン]+\z/) |
-| birthday | date | true | --- |
+| Column | Type | Options |
+|  ---  |  ---  |  ---  |
+| nickname | string | null: false |
+| email | string | null: false, unique: true |
+| password | string | null: false | 
+| password_confirmation | string | null: false | 
+| first_name | string | null: false |
+| last_name | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana | string | null: false |
+| birthday | date | null: false |
+
+### Association
+- has_many :items
+- has_many :shipping_methods
 
 ## itemsテーブル
 
-| Column | Type | Presence | Options |
-|  ---  |  ---  |  ---  |  ---  |
-| image | binary | true | ActiveStorage |
-| name | string | true | --- |
-| description | text | true | --- |
-| category | integer | true | --- |
-| condition | integer | true | --- |
-| shipping_charge | integer | true | --- |
-| shipping_origin | integer | true | --- |
-| days_until_shipping | integer | true | --- |
-| price | integer | true | match([3-9]{3}~[0-9]{7}) |
-| user_id | integer | true | --- |
+| Column | Type | Options |
+|  ---  |  ---  |  ---  |
+| image | binary | null: false |
+| name | string | null: false |
+| description | text | null: false |
+| category | integer | null: false |
+| condition | integer | null: false |
+| shipping_charge | integer | null: false |
+| shipping_origin | integer | null: false |
+| days_until_shipping | integer | null: false |
+| price | integer | null: false |
+| user_id | references | null: false, foreign_key: true|
 
-## payment_methodsテーブル
-
-| Column | Type | Presence | Options |
-|  ---  |  ---  |  ---  |  ---  |
-| card_number | integer | true | match([0-9]{12}) |
-| exp_month | integer | true | match([0-9]{2}) |
-| exp_year | integer | true | match([0-9]{2}) |
-| security_number | integer | true | match([0-9]{3}) |
-| user_id | integer | true | --- |
+### Association
+- belongs_to :user
+- has_one :shipping_method
 
 ## shipping_methodsテーブル
 
-| Column | Type | Presence | Options |
-|  ---  |  ---  |  ---  |  ---  |
-| postcode | integer | true | match(/\A\d{3}[-]\d{2}\z/) |
-| prefecture_id | integer | true | --- |
-| city | string | true | --- |
-| block | string | true | --- |
-| building | string | false | --- |
-| phone_number | integer | true |  match(/\A\d{11}\z/) |
-| user_id | integer | true | --- |
+| Column | Type | Options |
+|  ---  |  ---  |  ---  |
+| postcode | integer | null: false |
+| prefecture_id | integer | null: false |
+| city | string | null: false |
+| block | string | null: false |
+| building | string | --- |
+| phone_number | integer | null: false |
+| user_id | references | null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
