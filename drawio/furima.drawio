@@ -1,0 +1,45 @@
+<mxfile host="embed.diagrams.net" modified="2020-07-31T10:22:13.943Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.3 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="n_UAeonpWJ35suWDcfpw" version="13.5.7">
+    <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
+        <mxGraphModel dx="663" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="&amp;lt;&amp;lt;users&amp;gt;&amp;gt;&lt;br&gt;nickname&lt;br&gt;email&lt;br&gt;password&lt;br&gt;first_name&lt;br&gt;last_name&lt;br&gt;first_mame_kana&lt;br&gt;last_name_kana&lt;br&gt;birthday" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=ERoneToMany;startFill=0;endArrow=ERone;endFill=0;strokeWidth=1;" parent="1" source="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="680" y="440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="&amp;lt;&amp;lt;items&amp;gt;&amp;gt;&lt;br&gt;image&lt;br&gt;name&lt;br&gt;description&lt;br&gt;category&lt;br&gt;condition&lt;br&gt;shipping_charge&lt;br&gt;shipping_origin&lt;br&gt;days_until_shipping&lt;br&gt;price&lt;br&gt;user_id" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="240" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&amp;lt;&amp;lt;shipping_methods&amp;gt;&amp;gt;&lt;br&gt;postcode&lt;br&gt;prefecture_id&lt;br&gt;&lt;div&gt;&lt;span&gt;city&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;block&lt;/span&gt;&lt;/div&gt;building&lt;br&gt;phone_number&lt;br&gt;item_id" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="560" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="fontSize=12;html=1;endArrow=ERone;startArrow=ERone;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endFill=0;startFill=0;" parent="1" source="7" target="10" edge="1">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="700" y="450" as="sourcePoint"/>
+                        <mxPoint x="620" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="fontSize=12;html=1;endArrow=ERmany;strokeWidth=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endFill=0;" parent="1" source="6" target="7" edge="1">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="460" y="330" as="sourcePoint"/>
+                        <mxPoint x="560" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=ERone;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="1" source="26" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;curved=1;" edge="1" parent="1" source="26" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&amp;lt;&amp;lt;itempurchase&amp;gt;&amp;gt;&lt;br&gt;user_id&lt;br&gt;item_id" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="560" width="160" height="200" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
