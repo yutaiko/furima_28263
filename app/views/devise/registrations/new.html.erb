@@ -1,6 +1,7 @@
 <%= render "devise/shared/second-header"%>
 
-<%= form_with class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: '/users', method: :post, class: 'registration-main', local: true do |f| %>
+<%= devise_error_messages! %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
