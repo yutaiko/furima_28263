@@ -6,8 +6,13 @@ describe User, type: :model do
   describe 'ユーザー新規登録' do    
     context '新規登録成功' do
       it "nickname, email, first_name, last_name, first_name_kana, last_name_kana, birthdayが存在していれば登録ができる" do
+        @user.valid?
       end
       it "パスワードが6文字以上で登録ができる" do
+        @user.password = "123456"
+        @user.password_confirmation = "123456"
+        @user.valid?
+        binding.pry
       end
     end
 
