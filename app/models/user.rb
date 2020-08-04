@@ -11,7 +11,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email,           uniqueness: true, format: { with: Regex1 }
-    validates :password,        length: { minimum: 6 }, format: { with: Regex2 }
+    validates :password,        format: { with: Regex2 }
     validates :last_name,       format: { with: Regex3 }
     validates :first_name,      format: { with: Regex3 }
     validates :last_name_kana,  format: { with: Regex4 }
