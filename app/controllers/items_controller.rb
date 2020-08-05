@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @category =[{id:1,name: "test"},{id:2, name: "test2"}]
+    @categories = Category.all
   end
 
   def create
