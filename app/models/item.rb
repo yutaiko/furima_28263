@@ -9,15 +9,15 @@ class Item < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :shippingCharge
-  validates :shippingCharge_id,  numericality: { other_than: 0 } 
+  validates :shipping_charge_id,  numericality: { other_than: 0 } 
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :shippingOrigin
-  validates :shippingOrigin_id,  numericality: { other_than: 0 } 
+  validates :shipping_origin_id,  numericality: { other_than: 0 } 
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :daysUntilShipping
-  validates :daysUntilShipping_id,  numericality: { other_than: 0 } 
+  validates :days_until_shipping_id,  numericality: { other_than: 0 } 
   
 
 
