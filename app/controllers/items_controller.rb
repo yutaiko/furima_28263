@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categories = Category.all
+    @conditions = Condition.all
+    @shipping_charges = ShippingCharge.all
+    @shipping_origins = ShippingOrigin.all
+    @days_until_shippings = DaysUntilShipping.all
   end
 
   def create
@@ -20,7 +24,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).premit(
+    params.require(:item).permit(
       :image,
       :name,
       :description,
