@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
       :days_until_shipping_id,
       :price,
       :user
-    )
+    ).merge(user_id: current_user.id)
   end
 
   def move_to_index
