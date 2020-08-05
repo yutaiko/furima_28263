@@ -23,11 +23,12 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :photo
+  validate :photo_type
 
+  private
+  def photo_type
+    if !photo.content_type.in?(%('image/jpec image/png'))
+      errors.add(:image, 'needs to be a JPEG or PNG')
+    end
+  end
 end
-
-
-
-# :condition, :shipping_charge, :shipping_origin, :days_until_shipping
-
-# :condition_id, :shipping_charge_id, :shipping_origin_id, :days_until_shipping_id,
