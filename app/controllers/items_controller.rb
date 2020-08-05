@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @category =[{id:1,name: "test"},{id:2, name: "test2"}]
   end
 
   def create
