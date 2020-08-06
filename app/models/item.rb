@@ -27,8 +27,12 @@ class Item < ApplicationRecord
 
   private
   def photo_type
-    if !photo.content_type.in?(%('image/jpec image/png'))
-      errors.add(:image, 'needs to be a JPEG or PNG')
+    if photo.attached?
+      if !photo.content_type.in?(%('image/jpec image/png'))
+        errors.add(:photo, 'needs to be a JPEG or PNG')
+      end
+    else
+      errors.add(:photo, 'needs to be a file')
     end
   end
 end
