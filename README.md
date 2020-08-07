@@ -23,7 +23,7 @@
 
 | Column | Type | Options |
 |  ---  |  ---  |  ---  |
-| image | string | --- |
+| image | string | null: false |
 | name | string | null: false |
 | description | text | null: false |
 | category_id | integer | null: false |
