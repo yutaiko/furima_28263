@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:show]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -17,10 +18,19 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
       render :new
     end
+  end
+
+  def show
+    @user = User.find(@item.user_id)
+    @category = Category.find(@item.category_id)
+    @condition = Condition.find(@item.condition_id)
+    @shippingCharge = ShippingCharge.find(@item.shipping_charge_id)
+    @shippingOrigin = ShippingOrigin.find(@item.shipping_origin_id)
+    @daysUntilShipping = DaysUntilShipping.find(@item.days_until_shipping_id)
   end
 
   private
@@ -42,5 +52,9 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
