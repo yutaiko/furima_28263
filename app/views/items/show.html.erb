@@ -29,11 +29,10 @@
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
     <% end %>
 
-    <% if @item.stock == 1 %><%# 商品が売れていれば購入画面に進むリンクなし %>
+    <% if user_signed_in? && current_user.id != @item.user_id && @item.stock ==1 %>
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <% end %>
     
-    <% if user_signed_in? && current_user.id != @item.user_id %>
     <div class="item-explain-box">
       <span><%= "商品説明" %></span>
     </div>
@@ -41,27 +40,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <td class="detail-value"><%= @user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <td class="detail-value"><%= @category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <td class="detail-value"><%= @condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <td class="detail-value"><%= @shippingCharge.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <td class="detail-value"><%= @shippingOrigin.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%= @daysUntilShipping.name %></td>
         </tr>
       </tbody>
     </table>
@@ -100,7 +99,6 @@
       後ろの商品 ＞
     </a>
   </div>
-  <% end %>
   <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
 </div>
 
