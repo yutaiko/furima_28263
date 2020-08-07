@@ -33,6 +33,7 @@
 | days_until_shipping_id | integer | null: false |
 | price | integer | null: false |
 | user | references | null: false, foreign_key: true|
+| stock | integer | null: false |
 
 ### Association
 - belongs_to :user
