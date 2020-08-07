@@ -19,8 +19,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :daysUntilShipping
   validates :days_until_shipping_id, numericality: { other_than: 0 }
 
-  validates :name, presence: true
-  validates :description, presence: true
+  with_options presence: true do
+    validates :name
+    validates :description
+  end
 
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
