@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
   before_action :set_item_id, only: [:show, :edit]
-
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @category = Category.find(@item.category_id)
   end
 
   def update
@@ -65,6 +64,7 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
   def set_item_id
     @user = User.find(@item.user_id)
     @category = Category.find(@item.category_id)
@@ -72,5 +72,12 @@ class ItemsController < ApplicationController
     @shippingCharge = ShippingCharge.find(@item.shipping_charge_id)
     @shippingOrigin = ShippingOrigin.find(@item.shipping_origin_id)
     @daysUntilShipping = DaysUntilShipping.find(@item.days_until_shipping_id)
+  end
+
+  def correct_user
+    # @item = Item.find(params[:id])  ser_itemでインスタンス生成
+    if current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
 end
