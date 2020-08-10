@@ -23,6 +23,8 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   belongs_to :user
+  has_one :item_purchase
+  has_one :shipping_method
   has_one_attached :photo
   validate :photo_type
 
