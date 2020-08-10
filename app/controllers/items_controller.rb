@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item_id, only: [:show, :edit]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -25,12 +27,17 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.user_id)
-    @category = Category.find(@item.category_id)
-    @condition = Condition.find(@item.condition_id)
-    @shippingCharge = ShippingCharge.find(@item.shipping_charge_id)
-    @shippingOrigin = ShippingOrigin.find(@item.shipping_origin_id)
-    @daysUntilShipping = DaysUntilShipping.find(@item.days_until_shipping_id)
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end
   end
 
   private
@@ -56,5 +63,21 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_item_id
+    @user = User.find(@item.user_id)
+    @category = Category.find(@item.category_id)
+    @condition = Condition.find(@item.condition_id)
+    @shippingCharge = ShippingCharge.find(@item.shipping_charge_id)
+    @shippingOrigin = ShippingOrigin.find(@item.shipping_origin_id)
+    @daysUntilShipping = DaysUntilShipping.find(@item.days_until_shipping_id)
+  end
+
+  def correct_user
+    # @item = Item.find(params[:id])  ser_itemでインスタンス生成
+    if current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
 end
