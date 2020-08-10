@@ -17,7 +17,7 @@
 
 ### Association
 - has_many :items
-- has_many :transactions
+- has_many :item_purchases
 
 ## itemsテーブル
 
@@ -38,7 +38,7 @@
 ### Association
 - belongs_to :user
 - has_one :shipping_method
-- has_one :transaction
+- has_one :item_purchase
 
 ## shipping_methodsテーブル
 
