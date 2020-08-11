@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   root "items#index"
   resources :items, except: [:index] do
     resources :item_purchases, only: [:index, :create]
-    resources :shipping_method, only: :create
   end
 end

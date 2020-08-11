@@ -1,2 +1,0 @@
-class ShippingMethodsController < ApplicationController
-end
