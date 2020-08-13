@@ -11,41 +11,21 @@ RSpec.describe ItemInfo, type: :model do
       end
     end
     context '購入登録失敗' do
-      it '保存できないこと' do
+      it 'クレジットカード情報は必須で、正しいクレジットカードの情報でない時は決済できないこと' do
       end
-      it '保存できないこと' do
+      it '配送先の情報として郵便番号がないと決済できない' do
       end
-      it '保存できないこと' do
+      it '配送先の情報として都道府県がないと決済できない' do
       end
-      it '保存できないこと' do
+      it '配送先の情報として市区町村がないと決済できない' do
       end
-      it '保存できないこと' do
+      it '配送先の情報として番地がないと決済できない' do
       end
-      it '保存できないこと' do
+      it '配送先の情報として電話番号がないと決済できない' do
       end
-      it '保存できないこと' do
+      it '郵便番号にはハイフンが必要であること' do
       end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
-      end
-      it '保存できないこと' do
+      it '電話番号にはハイフンが不要であること' do
       end
     end
   end
