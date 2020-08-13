@@ -8,10 +8,10 @@ class ItemPurchasesController < ApplicationController
   end
 
   def create
-    @order = Order.new(price: order_params[:price])
-    if @order.valid?
+    @item_info = ItemInfo.new(item_purchase_params)
+    if @item_info.valid?
       pay_item
-      @order.save
+      @item_info.save
       return redirect_to root_path
     else
       render 'index'
@@ -20,21 +20,22 @@ class ItemPurchasesController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order).premit(:price, :token)
+  def item_purchase_params
+    params.permit(:price, :token, :postcode, :prefecture_id, :city, :block, :building, :phone_number, :stock, :item_id).merge(user_id: current_user.id)
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
+      amount: @item.price,  # 商品の値段
+      card: @item_info.token,    # カードトークン
       currency:'jpy'                 # 通貨の種類
     )
   end
 
   def set_item
     @item = Item.find(params[:item_id])
+
   end
 
   def set_item_id
