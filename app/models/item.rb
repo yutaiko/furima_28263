@@ -26,13 +26,15 @@ class Item < ApplicationRecord
   has_one :item_purchase
   has_one :shipping_method
   has_one_attached :photo
-  validate :photo_type
+  validate :photo_presence
 
   private
 
-  def photo_type
+  def photo_presence
     if photo.attached?
-      errors.add(:photo, 'needs to be a JPEG or PNG') unless photo.content_type.in?(%('image/jpec image/png'))
+      if !photo.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:photo, 'needs to be a JPEG or PNG')
+      end
     else
       errors.add(:photo, 'needs to be a file')
     end
