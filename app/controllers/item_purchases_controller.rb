@@ -3,6 +3,7 @@ class ItemPurchasesController < ApplicationController
   before_action :set_item_id, only: [:index]
   before_action :authenticate_user!, only: [:index, :create]
   before_action :same_user_do_not_purchase, only: [:index, :create]
+  before_action :sold_out, only: [:index, :create]
 
   def index
   end
@@ -48,5 +49,12 @@ class ItemPurchasesController < ApplicationController
 
   def same_user_do_not_purchase
     redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def sold_out
+    # @item = Item.find(params[:item_id]) #set_itemでインスタンス生成
+    if @item.stock == 0
+      redirect_to root_path
+    end
   end
 end
