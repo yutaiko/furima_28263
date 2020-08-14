@@ -12,13 +12,16 @@ class ItemInfo
                 :item_id,
                 :user_id
 
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
+  PHONE_NUMBER_REGEX = /\A\d{11}\z/
+
   with_options presence: true do
     validates :token # クレジットカードのトークン情報
-    validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :postcode, format: { with: POSTAL_CODE_REGEX }
     validates :prefecture_id
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{11}\z/ }
+    validates :phone_number, format: { with: PHONE_NUMBER_REGEX }
   end
 
   def save
