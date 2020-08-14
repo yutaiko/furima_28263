@@ -12,7 +12,7 @@ class ItemPurchasesController < ApplicationController
     if @item_info.valid?
       pay_item
       @item_info.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -25,17 +25,16 @@ class ItemPurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: @item_info.token,    # カードトークン
-      currency:'jpy'                 # 通貨の種類
+      amount: @item.price, # 商品の値段
+      card: @item_info.token, # カードトークン
+      currency: 'jpy' # 通貨の種類
     )
   end
 
   def set_item
     @item = Item.find(params[:item_id])
-
   end
 
   def set_item_id
@@ -48,8 +47,6 @@ class ItemPurchasesController < ApplicationController
   end
 
   def same_user_do_not_purchase
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id
   end
 end

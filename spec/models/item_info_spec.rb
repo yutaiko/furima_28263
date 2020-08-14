@@ -39,14 +39,14 @@ RSpec.describe ItemInfo, type: :model do
         expect(@item_info.errors.full_messages).to include("Phone number can't be blank")
       end
       it '郵便番号にはハイフンが必要であること' do
-        @item_info.postcode = "1234567"
+        @item_info.postcode = '1234567'
         @item_info.valid?
-        expect(@item_info.errors.full_messages).to include("Postcode is invalid")
+        expect(@item_info.errors.full_messages).to include('Postcode is invalid')
       end
       it '電話番号にはハイフンが不要であること' do
-        @item_info.phone_number = "090-1234-5678"
+        @item_info.phone_number = '090-1234-5678'
         @item_info.valid?
-        expect(@item_info.errors.full_messages).to include("Phone number is invalid")
+        expect(@item_info.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end
