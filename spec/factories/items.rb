@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name                    { '安西先生の名言' }
+    name                    { '安西先生の格言' }
     description             do
       "安西先生（漫画「スラムダンク」の登場人物）
                               湘北バスケ部の監督。性格は非常に温厚で物腰も柔らかく、『ホワイトヘアードブッダ（白髪仏）』と呼ばれている。
