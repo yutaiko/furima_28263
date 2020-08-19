@@ -6,6 +6,7 @@ class ItemPurchasesController < ApplicationController
   before_action :sold_out, only: [:index, :create]
 
   def index
+    @item_info = ItemInfo.new
   end
 
   def create
