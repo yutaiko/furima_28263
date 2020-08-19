@@ -7,8 +7,10 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-require('../price')   //商品登録時の、手数料・利益自動計算
-require("../card")    //payjp読み込みの為追加
+require('../price')    //商品登録時の、手数料・利益自動計算
+require("../card")     //payjp読み込みの為追加
+require("../preview")  //画像のプレビュー表示機能
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
