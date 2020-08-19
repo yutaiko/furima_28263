@@ -17,6 +17,14 @@ ja:
         shipping_origin_id: 発送元の地域
         days_until_shipping_id: 発送までの日数
         price: 価格
+      active_storage_attachments:
+        name: 出品画像
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
 
   activemodel:
     models:
@@ -29,17 +37,7 @@ ja:
         block: 番地
         building: 建物名
         phone_number: 電話番号
-      active_storage_attachments:
-        photo: 出品画像
-        
-ja:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+
   date:
     abbr_day_names:
     - 日
