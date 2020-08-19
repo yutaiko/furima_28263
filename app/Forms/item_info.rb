@@ -18,7 +18,7 @@ class ItemInfo
   with_options presence: true do
     validates :token # クレジットカードのトークン情報
     validates :postcode, format: { with: POSTAL_CODE_REGEX }
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 0 }
     validates :city
     validates :block
     validates :phone_number, format: { with: PHONE_NUMBER_REGEX }

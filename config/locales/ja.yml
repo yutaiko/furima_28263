@@ -17,9 +17,14 @@ ja:
         shipping_origin_id: 発送元の地域
         days_until_shipping_id: 発送までの日数
         price: 価格
-      shipping_method:
+
+  activemodel:
+    models:
+      item_info:
+    attributes:
+      item_info:
         postcode: 郵便番号
-        prefecture: 都道府県
+        prefecture_id: 都道府県
         city: 市区町村
         block: 番地
         building: 建物名
